@@ -25,6 +25,8 @@ else
         fi
 
         [ $fail -eq 0 ] && export filename=$1
+
+        [[ $(dirname $filename) == "." ]] && export filename=$(pwd)/$(basename $filename)
     fi
 
     if [ $fail -eq 0 ]
