@@ -20,6 +20,6 @@ do
     if [[ ! $i == "_*" ]] || $SELF_INDICATE
     then
         chmod +x $codebase/$i.sh
-        alias $i="$codebase/$i.sh"
+        alias $i=". $codebase/$i.sh"
     fi
 done

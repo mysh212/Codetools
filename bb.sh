@@ -44,13 +44,13 @@ else
 
             start=$(date +"%s.%N")
 
-            ./t.o
+            ${filename/.cpp/.o}
 
             end=$(date +"%s.%N")
 
             formated=$[ $end - $start ]
 
-            which rg && formated=`echo $formated | rg '^\d+(\.\d{0,3})?' -or '$0'`
+            which rg &>/dev/null && formated=`echo $formated | rg '^\d+(\.\d{0,3})?' -or '$0'`
 
             echo \[ $formated seconds \]
 
