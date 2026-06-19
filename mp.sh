@@ -26,9 +26,9 @@ else
         url=
     fi
 
-    if [[ $filename == *.cpp ]]
+    if [[ $filename == *.py ]]
     then
-        filename=${filename/.cpp/}
+        filename=${filename/.py/}
     fi
 
     if [[ $(dirname $filename) == '.' ]]
@@ -36,7 +36,7 @@ else
         filename=$(pwd)/$(basename $filename)
     fi
 
-    filename=$filename.cpp
+    filename=$filename.py
 
     if ([ -f $filename ] || [ -d $filename ]) && (( $safe == 0 ))
     then
@@ -46,10 +46,10 @@ else
         # echo url=$url
         # echo safe=$safe
 
-        header=$(codeheader // $url)
+        header=$(codeheader \# $url)
 
         echo $header >! $filename
-        [ -f $codebase/template.cpp ] && cat $codebase/template.cpp >> $filename
+        [ -f $codebase/template.py ] && cat $codebase/template.py >> $filename
 
         $CODE_EDITOR $filename
     fi

@@ -1,6 +1,7 @@
 #! /usr/bin/env sh
 
 SELF_INDICATE=false
+export CODE_EDITOR=code
 
 codebase=$0
 

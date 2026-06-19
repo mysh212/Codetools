@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 fail=0
 
@@ -18,9 +18,9 @@ else
             fail=1
         fi
 
-        if [[ ! $1 == *.cpp ]]
+        if [[ ! $1 == *.py ]]
         then
-            echo $1 is not a CPP file
+            echo $1 is not a Python file
             fail=1
         fi
 
@@ -31,24 +31,14 @@ else
 
     if [ $fail -eq 0 ]
     then
-        if [[ $filename == *.py ]]
+        if [[ $filename == *.cpp ]]
         then
-            echo \> Referring to pp
+            echo \> Referring to bb
             echo
 
-            pp
+            bb
         fi
 
-        echo \> Building $filename
-
-        g++ --std=c++20 $filename -o ${filename/.cpp/.o} -O2 # -g
-
-        if [ $? -eq 0 ]
-        then
-            echo \> Finished.
-            echo
-
-            clockit ${filename/.cpp/.o}
-        fi
+        clockit py $filename
     fi
 fi
