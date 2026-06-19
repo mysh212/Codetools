@@ -23,3 +23,5 @@ do
         alias $i=". $codebase/$i.sh"
     fi
 done
+
+export codebase=$codebase
