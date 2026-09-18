@@ -8,7 +8,7 @@ then
     trap cleanup EXIT
     fail=1
 else
-    if [ ! $# -eq 0 ] && [[ ! $1 == "c" ]]
+    if [ ! $# -eq 0 ]
     then
         # filename=$1
 
@@ -33,25 +33,22 @@ else
     then
         if [[ $filename == *.py ]]
         then
-            cc
-        else
-            code="`sed 's/#include<bits\/stdc++.h>//g' $filename | sed 's/#include<bits\/extc++.h>//g' | g++ -E $GPP_ARGS -`"
+            echo \> Referring to pp
+            echo
 
-            grep '#include<bits/extc++.h>' $filename &>/dev/null && code="#include<bits/extc++.h>
-$code"
-            code="#include<bits/stdc++.h>
-$code"
+            pp
+        fi
 
-            code="`codeheader // c`
+        echo \> Building $filename
 
-$code"
-            (( $# >= 1 )) && [[ $1 == "c" ]] && code="$code
-/*
-$(cat $filename)
-*/"
+        g++ --std=c++20 $GPP_ARGS $filename -o ${filename/.cpp/.o} -O2 # -g
 
-            print -r -- $code | pbcopy
+        if [ $? -eq 0 ]
+        then
             echo \> Finished.
+            echo
+
+            clockit ${filename/.cpp/.o}
         fi
     fi
 fi
