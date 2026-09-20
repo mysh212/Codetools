@@ -37,18 +37,19 @@ else
             echo
 
             pp
-        fi
+        else
 
-        echo \> Building $filename
+            echo \> Building $filename
 
-        g++ --std=c++20 $GPP_ARGS $filename -o ${filename/.cpp/.o} -O2 -DLOCAL # -g
+            g++ --std=c++20 $GPP_ARGS $filename -o ${filename/.cpp/.o} -O2 -DLOCAL # -g
 
-        if [ $? -eq 0 ]
-        then
-            echo \> Finished.
-            echo
+            if [ $? -eq 0 ]
+            then
+                echo \> Finished.
+                echo
 
-            clockit ${filename/.cpp/.o}
+                clockit ${filename/.cpp/.o}
+            fi
         fi
     fi
 fi

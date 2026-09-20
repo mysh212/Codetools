@@ -37,8 +37,8 @@ else
             echo
 
             bb
+        else
+            clockit py $filename
         fi
-
-        clockit py $filename
     fi
 fi
