@@ -18,7 +18,7 @@ fi
 
 
 echo $prefix Author : ysh
-echo $prefix $title$(date +"%Y/%m/%d %a %H:%M:%S")
+echo $prefix $title$(LC_ALL=C date +"%Y/%m/%d %a %H:%M:%S")
 if [ $# -gt 1 ] && [[ ! $2 == "c" ]]
 then
     echo $prefix $2
