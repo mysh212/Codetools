@@ -51,6 +51,8 @@ else
         echo $header >! $filename
         [ -f $codebase/template.py ] && cat $codebase/template.py >> $filename
 
+        echo $(LC_ALL=C date +"%Y/%m/%d %a %H:%M:%S")        $filename >>! mc.info
+
         $CODE_EDITOR $filename
     fi
 fi
