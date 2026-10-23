@@ -41,7 +41,10 @@ else
 
             echo \> Building $filename
 
-            g++ --std=c++20 $GPP_ARGS $filename -o ${filename/.cpp/.o} -O2 -DLOCAL # -g
+            # g++ --std=c++20 $GPP_ARGS $filename -o ${filename/.cpp/.o} -O2 -DLOCAL # -g
+            
+            g++ --std=c++20 $GPP_ARGS -g -c $filename -o /tmp/$(basename ${filename/.cpp/.o}) -O2 -DLOCAL
+            g++ /tmp/$(basename ${filename/.cpp/.o}) -o ${filename/.cpp/.o}
 
             if [ $? -eq 0 ]
             then
